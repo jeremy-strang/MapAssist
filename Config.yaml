@@ -8,21 +8,20 @@ HotkeyConfiguration:
   ExportItemsKey: F9
 HiddenAreas:
 - Forgotten Tower
-AuthorizedWindowTitles: []
 RenderingConfiguration:
-  Opacity: 0.5
-  IconOpacity: 0.9
+  Opacity: 0.35
+  IconOpacity: 0.7
   OverlayMode: true
   Position: Center
   MonsterHealthBar: true
-  ToggleViaInGameMap: false
+  ToggleViaInGameMap: true
   ToggleViaInGamePanels: true
-  StickToLastGameWindow: true
-  Size: 800
+  StickToLastGameWindow: false
+  Size: 700
   ZoomLevel: 1
-  BuffSize: 1
+  BuffSize: 0.7
+  BuffAlertLowRes: false
   BuffPosition: Bottom
-  BuffAlertLowRes: true
   ShowLife: false
   ShowLifePerc: true
   ShowMana: false
@@ -30,32 +29,32 @@ RenderingConfiguration:
   ShowCurrentLevel: false
   ShowExpProgress: true
   ShowPotionBelt: true
-  ShowResistances: false
+  ShowResistances: true
   LinesMode: All
 MapConfiguration:
   SuperUniqueMonster:
-    IconOutlineColor: Yellow
+    IconColor: Yellow
     IconShape: Cross
-    IconSize: 6
+    IconSize: 7
     IconThickness: 2
   UniqueMonster:
-    IconOutlineColor: DarkOrange
+    IconColor: DarkOrange
     IconShape: Cross
-    IconSize: 6
+    IconSize: 7
     IconThickness: 2
   ChampionMonster:
-    IconOutlineColor: DarkRed
+    IconColor: DarkOrange
     IconShape: Cross
-    IconSize: 6
+    IconSize: 7
     IconThickness: 2
   MinionMonster:
-    IconOutlineColor: 255, 150, 150
-    IconShape: Cross
-    IconSize: 6
+    IconColor: DarkOrange
+    IconShape: Square
+    IconSize: 5
     IconThickness: 1
   NormalMonster:
     IconOutlineColor: Gray
-    IconShape: Cross
+    IconShape: Square
     IconSize: 6
     IconThickness: 1
   Npc:
@@ -212,7 +211,7 @@ MapConfiguration:
     IconShape: Ellipse
     IconSize: 0
   MissileFireLarge:
-    IconColor: 255, 0, 0
+    IconColor: Red
     IconShape: Ellipse
     IconSize: 0
   MissileFireSmall:
@@ -228,7 +227,7 @@ MapConfiguration:
     IconShape: Ellipse
     IconSize: 0
   MissileLightLarge:
-    IconColor: 255, 255, 0
+    IconColor: Yellow
     IconShape: Ellipse
     IconSize: 0
   MissileLightSmall:
@@ -236,7 +235,7 @@ MapConfiguration:
     IconShape: Ellipse
     IconSize: 0
   MissilePoisonLarge:
-    IconColor: 0, 255, 0
+    IconColor: Lime
     IconShape: Ellipse
     IconSize: 0
   MissilePoisonSmall:
@@ -269,8 +268,8 @@ MapColorConfiguration:
 GameInfo:
   Position: TopLeft
   ShowGameName: true
-  ShowDifficulty: true
   ShowArea: true
+  ShowDifficulty: true
   ShowAreaLevel: true
   ShowOverlayFPS: false
   ShowGameTimer: true
