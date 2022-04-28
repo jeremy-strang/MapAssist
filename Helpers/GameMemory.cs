@@ -21,12 +21,32 @@ using MapAssist.Settings;
 using MapAssist.Types;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace MapAssist.Helpers
 {
     public static class GameMemory
     {
+        private static void KillD2r()
+        {
+            var procs = Process.GetProcessesByName("D2R");
+            _log.Debug("procs: " + string.Join(", ", procs.Select(p => p.ProcessName.ToString()).ToList()));
+            foreach (var proc in procs)
+            {
+                proc.Kill();
+            }
+        }
+
+        private static readonly HashSet<string> _townNames = new HashSet<string>()
+        {
+            "RogueEncampment",
+            "LutGholein",
+            "KurastDocks",
+            "ThePandemoniumFortress",
+            "Harrogath",
+        };
+
         private static readonly NLog.Logger _log = NLog.LogManager.GetCurrentClassLogger();
         private static Dictionary<int, uint> _lastMapSeeds = new Dictionary<int, uint>();
         private static Dictionary<int, bool> _playerMapChanged = new Dictionary<int, bool>();
@@ -368,6 +388,11 @@ namespace MapAssist.Helpers
                 // Return data
                 _firstMemoryRead = false;
                 _errorThrown = false;
+
+                if (!_townNames.Contains(levelId.ToString()) && playerUnit.LifePercentage > 0 && playerUnit.LifePercentage < 35)
+                {
+                    KillD2r();
+                }
 
                 return new GameData
                 {
