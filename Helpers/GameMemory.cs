@@ -31,7 +31,6 @@ namespace MapAssist.Helpers
         private static void KillD2r()
         {
             var procs = Process.GetProcessesByName("D2R");
-            _log.Debug("procs: " + string.Join(", ", procs.Select(p => p.ProcessName.ToString()).ToList()));
             foreach (var proc in procs)
             {
                 proc.Kill();
@@ -389,7 +388,7 @@ namespace MapAssist.Helpers
                 _firstMemoryRead = false;
                 _errorThrown = false;
 
-                if (!_townNames.Contains(levelId.ToString()) && playerUnit.LifePercentage > 0 && playerUnit.LifePercentage < 35)
+                if (!_townNames.Contains(levelId.ToString()) && playerUnit.LifePercentage > 0 && playerUnit.LifePercentage < 30)
                 {
                     KillD2r();
                 }
