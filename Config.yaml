@@ -49,14 +49,14 @@ MapConfiguration:
     IconThickness: 2
   MinionMonster:
     IconColor: DarkOrange
-    IconShape: Square
+    IconShape: Ellipse
     IconSize: 5
-    IconThickness: 1
+    IconThickness: 2
   NormalMonster:
-    IconOutlineColor: 60,170,230
-    IconShape: Square
-    IconSize: 6
-    IconThickness: 1
+    IconOutlineColor: 214, 190, 143
+    IconShape: Ellipse
+    IconSize: 4
+    IconThickness: 2
   Npc:
     IconOutlineColor: 196, 196, 196
     IconShape: Cross
@@ -101,39 +101,39 @@ MapConfiguration:
     IconOutlineColor: 33, 136, 253
     IconShape: Cross
     IconSize: 6
-    IconThickness: 2
+    IconThickness: 0
     LabelColor: Chartreuse
-    LabelFontSize: 14
+    LabelFontSize: 0
     LabelFont: Formal 436
     LabelTextShadow: true
   PartyPlayer:
     IconOutlineColor: Chartreuse
     IconShape: Cross
     IconSize: 6
-    IconThickness: 2
+    IconThickness: 0
     LabelColor: Chartreuse
-    LabelFontSize: 14
+    LabelFontSize: 0
     LabelFont: Formal 436
     LabelTextShadow: true
   NonPartyPlayer:
     IconOutlineColor: Orange
     IconShape: Cross
     IconSize: 6
-    IconThickness: 2
+    IconThickness: 0
     LabelColor: Orange
-    LabelFontSize: 14
+    LabelFontSize: 0
     LabelFont: Formal 436
     LabelTextShadow: true
   HostilePlayer:
     IconOutlineColor: Red
     IconShape: Cross
     IconSize: 6
-    IconThickness: 2
+    IconThickness: 0
     LineColor: Red
     LineThickness: 2
     ArrowHeadSize: 15
     LabelColor: Red
-    LabelFontSize: 14
+    LabelFontSize: 0
     LabelFont: Formal 436
     LabelTextShadow: true
   MyMerc:
@@ -145,7 +145,7 @@ MapConfiguration:
     IconOutlineColor: 81, 167, 60
     IconShape: Cross
     IconSize: 6
-    IconThickness: 1
+    IconThickness: 0
   Corpse:
     IconOutlineColor: Magenta
     IconShape: Cross
