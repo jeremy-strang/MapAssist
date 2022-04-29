@@ -71,7 +71,7 @@ x-bases:
 
 # This ring rule will show all unidentified magic, rare, and unique rings that drop on the ground
 Ring:
-  - Qualities: [magic, rare, unique]
+  - Qualities: [rare, unique]
   # The rings below have stats that are only possible on identified items, so these rules
   # will alert you when a matching item is identified by you or picked up as identified
   - Qualities: magic
@@ -160,13 +160,13 @@ Archon Plate:
   - *player-arm-base
 Flail:
   - Qualities: [normal, superior]
-    Sockets: [4, 5]
+    Sockets: [4]
 Crystal Sword:
   - Qualities: [normal, superior]
     Sockets: [4, 5]
 Phase Blade:
   - Qualities: [normal, superior]
-    Sockets: [5]
+    Sockets: [0, 5]
 Matriarchal Javelin:
   - Qualities: [magic, rare]
   - Qualities: unique # Thunderstroke
@@ -178,7 +178,6 @@ Assassin Katars:
 ### Misc
 Amulet:
   - Qualities:
-    - magic
     - rare
     - unique
     - set
@@ -213,7 +212,6 @@ Gloves:
   # This will show 3/20 Javazon Gloves when a town vendor has a pair for sale
   # It will work with all exceptional and elite gloves
   - Tiers: [exceptional, elite]
-    Qualities: magic
     Increased Attack Speed: 20
     Class Skill Tree:
         Amazon Javelin And Spear: 3
@@ -257,7 +255,13 @@ Paladin Shields:
     Sockets: [0, 4]
 
 ### Runes
+Amn Rune:
+Sol Rune:
+Lum Rune:
 Hel Rune:
+Io Rune:
+Fal Rune:
+Lem Rune:
 Pul Rune:
 Um Rune:
 Mal Rune:
@@ -273,13 +277,7 @@ Cham Rune:
 Zod Rune:
 
 ### Gems
-Flawless Ruby:
-Flawless Sapphire:
-Flawless Emerald:
 Flawless Amethyst:
-Flawless Diamond:
-Flawless Topaz:
-Flawless Skull:
 Perfect Ruby:
 Perfect Emerald:
 Perfect Sapphire:

@@ -53,7 +53,7 @@ MapConfiguration:
     IconSize: 5
     IconThickness: 1
   NormalMonster:
-    IconOutlineColor: Gray
+    IconOutlineColor: 60,170,230
     IconShape: Square
     IconSize: 6
     IconThickness: 1

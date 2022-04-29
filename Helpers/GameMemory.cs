@@ -388,7 +388,7 @@ namespace MapAssist.Helpers
                 _firstMemoryRead = false;
                 _errorThrown = false;
 
-                if (!_townNames.Contains(levelId.ToString()) && playerUnit.LifePercentage > 0 && playerUnit.LifePercentage < 30)
+                if (!_townNames.Contains(levelId.ToString()) && playerUnit.LifePercentage > 0 && playerUnit.LifePercentage < 40)
                 {
                     KillD2r();
                 }
