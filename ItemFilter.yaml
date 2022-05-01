@@ -216,6 +216,10 @@ Gloves:
     Class Skill Tree:
         Amazon Javelin And Spear: 3
 
+Javelin:
+  - Qualities: magic
+    Strength: 13
+
 ### Helmets
 Bone Visage:
   - Qualities: [normal, superior]
@@ -244,15 +248,46 @@ Druid Helms:
 
 ### Barbarian Helms
 Barbarian Helms:
-  - Tiers: elite
+  - Tiers: [exceptional, elite]
     Qualities: [magic, rare]
 
 ### Paladin Shields
 Paladin Shields:
-  - Tiers: elite
+  - Tiers: [exceptional, elite]
     Qualities: [normal, superior]
     All Resist: 25
     Sockets: [0, 4]
+
+Swords:
+  - Qualities: magic
+    Class Skill Tree:
+      Barbarian Warcries: 3
+
+Daggers:
+  - Qualities: magic
+    Class Skill Tree:
+      Barbarian Warcries: 3
+
+Throwing Knifes:
+  - Qualities: magic
+    Class Skill Tree:
+      Barbarian Warcries: 3
+
+Throwing Axes:
+  - Qualities: magic
+    Class Skill Tree:
+      Barbarian Warcries: 3
+
+Javelins:
+  - Qualities: magic
+    Class Skill Tree:
+      Barbarian Warcries: 3
+
+Spears:
+  - Qualities: magic
+    Class Skill Tree:
+      Barbarian Warcries: 3
+
 
 ### Runes
 Amn Rune:
