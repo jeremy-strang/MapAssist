@@ -239,6 +239,18 @@ namespace MapAssist.Settings
 
         [YamlMember(Alias = "Enhanced Damage")]
         public int? EnhancedDamage { get; set; }
+
+        [YamlMember(Alias = "Min Area Level")]
+        public int? MinAreaLevel { get; set; }
+
+        [YamlMember(Alias = "Max Area Level")]
+        public int? MaxAreaLevel { get; set; }
+
+        [YamlMember(Alias = "Min Player Level")]
+        public int? MinPlayerLevel { get; set; }
+
+        [YamlMember(Alias = "Max Player Level")]
+        public int? MaxPlayerLevel { get; set; }
     }
 
     public static class ItemFilterExtensions

@@ -219,6 +219,8 @@ namespace MapAssist.Helpers
                     throw new Exception("Game difficulty out of bounds.");
                 }
 
+                var areaLevel = levelId.Level(gameDifficulty);
+
                 // Players
                 var playerList = rawPlayerUnits.Where(x => x.UnitType == UnitType.Player && x.IsPlayer)
                     .Select(x => x.UpdateRosterEntry(rosterData)).ToArray()
@@ -297,6 +299,8 @@ namespace MapAssist.Helpers
                         cache[item.HashString] = item;
                     }
 
+                    item.IsPlayerOwned = _playerCubeOwnerID[_currentProcessId] != uint.MaxValue && item.ItemData.dwOwnerID == _playerCubeOwnerID[_currentProcessId];
+
                     if (Items.ItemUnitIdsToSkip[_currentProcessId].Contains(item.UnitId)) continue;
 
                     if (_playerMapChanged[_currentProcessId] && item.IsAnyPlayerHolding && item.Item != Item.HoradricCube && !Items.ItemUnitIdsToSkip[_currentProcessId].Contains(item.UnitId))
@@ -324,9 +328,9 @@ namespace MapAssist.Helpers
 
                     var checkDroppedItem = Items.CheckDroppedItem(item, _currentProcessId);
                     var checkVendorItem = Items.CheckVendorItem(item, _currentProcessId);
-                    if (item.IsValidItem && (checkDroppedItem || checkVendorItem || checkInventoryItem))
+                    if (item.IsValidItem && !item.IsInSocket && (checkDroppedItem || checkVendorItem || checkInventoryItem))
                     {
-                        Items.LogItem(item, _currentProcessId);
+                        Items.LogItem(item, areaLevel, PlayerUnit.Level, _currentProcessId);
                     }
 
                     if (item.Item == Item.HoradricCube)
@@ -363,7 +367,7 @@ namespace MapAssist.Helpers
                 }
 
                 // Belt items
-                var belt = allItems.FirstOrDefault(x => x.ItemModeMapped == ItemModeMapped.Player && x.ItemData.BodyLoc == BodyLoc.BELT);
+                var belt = allItems.FirstOrDefault(x => x.IsPlayerOwned && x.ItemModeMapped == ItemModeMapped.Player && x.ItemData.BodyLoc == BodyLoc.BELT);
                 var beltItems = allItems.Where(x => x.ItemModeMapped == ItemModeMapped.Belt).ToArray();
 
                 var beltSize = belt == null ? 1 :

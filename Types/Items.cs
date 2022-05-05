@@ -36,8 +36,9 @@ namespace MapAssist.Types
         public static Dictionary<int, Dictionary<uint, Npc>> ItemVendors = new Dictionary<int, Dictionary<uint, Npc>>();
         public static Dictionary<int, List<ItemLogEntry>> ItemLog = new Dictionary<int, List<ItemLogEntry>>();
         public static Dictionary<string, LocalizedObj> LocalizedItems = new Dictionary<string, LocalizedObj>();
+        public static Dictionary<ushort, LocalizedObj> LocalizedRunewords = new Dictionary<ushort, LocalizedObj>();
 
-        public static void LogItem(UnitItem item, int processId)
+        public static void LogItem(UnitItem item, int areaLevel, int playerLevel, int processId)
         {
             if (item.IsInStore)
             {
@@ -56,7 +57,7 @@ namespace MapAssist.Types
 
             ItemUnitIdsSeen[processId].Add(item.UnitId);
 
-            var (logItem, rule) = LootFilter.Filter(item);
+            var (logItem, rule) = LootFilter.Filter(item, areaLevel, playerLevel);
             if (!logItem) return;
 
             if (MapAssistConfiguration.Loaded.ItemLog.PlaySoundOnDrop && (rule == null || rule.PlaySoundOnDrop))
@@ -179,7 +180,7 @@ namespace MapAssist.Types
                     {
                         foreach (var skillTree in skillTrees)
                         {
-                            itemSuffix += $" (+{points} {skillTree.Name()} skills)";
+                            itemSuffix += $" (+{points} {skillTree.Name().Replace(" Skills", "")} skills)";
                         }
                     }
                 }
@@ -287,6 +288,7 @@ namespace MapAssist.Types
                             itemFullName = foundFullUniqueName;
                         }
                         break;
+
                     case ItemQuality.SET:
                         if (_SetFromId.TryGetValue(item.ItemData.uniqueOrSetId, out var foundFullSetName))
                         {
@@ -297,7 +299,13 @@ namespace MapAssist.Types
             }
 
             var localizedName = GetItemNameFromKey(itemFullName);
-            if (localizedName == "ItemNotFound") return itemFullName;
+            if (localizedName == "ItemNotFound") localizedName = itemFullName;
+
+            if (item.IsRuneWord)
+            {
+                return GetRunewordFromId(item.Prefixes[0]) + " " + localizedName;
+            }
+
             return localizedName;
         }
 
@@ -305,6 +313,20 @@ namespace MapAssist.Types
         {
             LocalizedObj localItem;
             if (!LocalizedItems.TryGetValue(key, out localItem))
+            {
+                return "ItemNotFound";
+            }
+
+            var lang = MapAssistConfiguration.Loaded.LanguageCode;
+            var prop = localItem.GetType().GetProperty(lang.ToString()).GetValue(localItem, null);
+
+            return prop.ToString();
+        }
+
+        public static string GetRunewordFromId(ushort id)
+        {
+            LocalizedObj localItem;
+            if (!LocalizedRunewords.TryGetValue(id, out localItem))
             {
                 return "ItemNotFound";
             }
