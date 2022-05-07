@@ -117,10 +117,10 @@ namespace MapAssist
                         }
                         _lastKnownHp = hp;
 
-                        if (!_townNames.Contains(_gameData.Area.ToString()) && playerUnit.LifePercentage > 0 && playerUnit.LifePercentage < 40)
+                        if (!_townNames.Contains(_gameData.Area.ToString()) && playerUnit.LifePercentage > 0 && playerUnit.LifePercentage < _chickenHpPercent)
                         {
                             KillD2r();
-                            MessageBox.Show("D2R was killed by MAChicken due to life threshold being reached.");
+                            MessageBox.Show("D2R was killed by MAChicken due to life threshold being reached. Player life: " + playerUnit.LifePercentage + "%, threshold: " + _chickenHpPercent + "%");
                         }
                     }
 
