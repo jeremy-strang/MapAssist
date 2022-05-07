@@ -52,6 +52,7 @@ namespace MapAssist
         private bool _show = true;
         private static readonly object _lock = new object();
         private static int _lastKnownHp;
+        private static int _chickenHpPercent = 40;
 
         public Overlay()
         {
@@ -67,6 +68,17 @@ namespace MapAssist
 
             _window.DrawGraphics += _window_DrawGraphics;
             _window.DestroyGraphics += _window_DestroyGraphics;
+
+            var cfgChicken = MapAssistConfiguration.Loaded.ChickenHpPercent;
+            if (cfgChicken > 0 && cfgChicken < 100)
+            {
+                _chickenHpPercent = cfgChicken;
+                _log.Info("Loaded chicken life percent: " + _chickenHpPercent);
+            }
+            else
+            {
+                _log.Error("Invalid chicken life percent given: " + _chickenHpPercent + ", using default of 35 instead");
+            }
         }
 
         private static void KillD2r()
@@ -108,6 +120,7 @@ namespace MapAssist
                         if (!_townNames.Contains(_gameData.Area.ToString()) && playerUnit.LifePercentage > 0 && playerUnit.LifePercentage < 40)
                         {
                             KillD2r();
+                            MessageBox.Show("D2R was killed by MAChicken due to life threshold being reached.");
                         }
                     }
 

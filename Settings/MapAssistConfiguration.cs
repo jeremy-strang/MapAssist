@@ -76,6 +76,9 @@ namespace MapAssist.Settings
 
         [YamlMember(Alias = "DPIAware", ApplyNamingConventions = false)]
         public bool DPIAware { get; set; }
+
+        [YamlMember(Alias = "ChickenHpPercent", ApplyNamingConventions = false)]
+        public int ChickenHpPercent { get; set; }
     }
 
     public class MapColorConfiguration
