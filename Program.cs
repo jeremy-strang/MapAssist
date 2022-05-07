@@ -34,7 +34,7 @@ namespace MapAssist
     {
         private static readonly string githubSha = "GITHUB_SHA";
         private static readonly string githubRunNumber = "GITHUB_RUN_NUMBER";
-        private static readonly string appName = "MapAssist";
+        private static readonly string appName = "MapAssistChicken";
         private static string messageBoxTitle = $"{appName} v1.0.0";
         private static Mutex mutex = null;
 
