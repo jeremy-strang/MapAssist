@@ -26,6 +26,7 @@ namespace MapAssist.Types
 {
     public class GameData
     {
+        public bool InGame;
         public Point PlayerPosition;
         public uint MapSeed;
         public Difficulty Difficulty;
