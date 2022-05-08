@@ -1132,39 +1132,39 @@ namespace MapAssist.Helpers
             }
 
             // Belt items
-            if (MapAssistConfiguration.Loaded.RenderingConfiguration.ShowPotionBelt)
-            {
-                var font = CreateFont(gfx, fontFamily, gfx.ScaleFontSize(20));
-                var colors = new Color[]
-                {
-                    Color.FromArgb(238, 168, 174), // Health
-                    Color.FromArgb(169, 183, 238), // Mana
-                    Color.FromArgb(200, 119, 199), // Rejuv
-                };
+            //if (MapAssistConfiguration.Loaded.RenderingConfiguration.ShowPotionBelt)
+            //{
+            //    var font = CreateFont(gfx, fontFamily, gfx.ScaleFontSize(20));
+            //    var colors = new Color[]
+            //    {
+            //        Color.FromArgb(238, 168, 174), // Health
+            //        Color.FromArgb(169, 183, 238), // Mana
+            //        Color.FromArgb(200, 119, 199), // Rejuv
+            //    };
 
-                for (var i = 0; i < 4; i++)
-                {
-                    var items = _gameData.PlayerUnit.BeltItems[i].Where(x => x != null).ToArray();
+            //    for (var i = 0; i < 4; i++)
+            //    {
+            //        var items = _gameData.PlayerUnit.BeltItems[i].Where(x => x != null).ToArray();
 
-                    var itemTypes = items.Select(x => x.Item.IsHealthPotion() ? 0 : x.Item.IsManaPotion() ? 1 : x.Item.IsRejuvPotion() ? 2 : 3).ToArray();
-                    var color = itemTypes.Distinct().Count() == 1 && itemTypes[0] < colors.Length ? colors[itemTypes[0]] : Color.White;
-                    var showAsterisk = items.Count(x => x.Item == items[0].Item) < items.Length;
+            //        var itemTypes = items.Select(x => x.Item.IsHealthPotion() ? 0 : x.Item.IsManaPotion() ? 1 : x.Item.IsRejuvPotion() ? 2 : 3).ToArray();
+            //        var color = itemTypes.Distinct().Count() == 1 && itemTypes[0] < colors.Length ? colors[itemTypes[0]] : Color.White;
+            //        var showAsterisk = items.Count(x => x.Item == items[0].Item) < items.Length;
 
-                    var position = new Point(
-                        0.5f * gfx.Width + 0.16f * gfx.Height + 8.00f + 0.0575f * gfx.Height * i,
-                        0.99f * gfx.Height - font.FontSize
-                    );
+            //        var position = new Point(
+            //            0.5f * gfx.Width + 0.16f * gfx.Height + 8.00f + 0.0575f * gfx.Height * i,
+            //            0.99f * gfx.Height - font.FontSize
+            //        );
 
-                    DrawText(gfx, position, items.Length.ToString(), fontFamily, font.FontSize, color, true, TextAlign.Right);
+            //        DrawText(gfx, position, items.Length.ToString(), fontFamily, font.FontSize, color, true, TextAlign.Right);
 
-                    position.Y += font.FontSize - 0.05f * gfx.Height;
+            //        position.Y += font.FontSize - 0.05f * gfx.Height;
 
-                    if (showAsterisk)
-                    {
-                        DrawText(gfx, position, "*", fontFamily, font.FontSize, color, true, TextAlign.Right);
-                    }
-                }
-            }
+            //        if (showAsterisk)
+            //        {
+            //            DrawText(gfx, position, "*", fontFamily, font.FontSize, color, true, TextAlign.Right);
+            //        }
+            //    }
+            //}
         }
 
         // Drawing Utility Functions

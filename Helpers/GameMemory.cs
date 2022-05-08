@@ -46,10 +46,10 @@ namespace MapAssist.Helpers
 
         public static GameData GetGameData()
         {
-            if (!MapAssistConfiguration.Loaded.RenderingConfiguration.StickToLastGameWindow && !GameManager.IsGameInForeground)
-            {
-                return null;
-            }
+            //if (!MapAssistConfiguration.Loaded.RenderingConfiguration.StickToLastGameWindow && !GameManager.IsGameInForeground)
+            //{
+            //    return null;
+            //}
 
             var processContext = GameManager.GetProcessContext();
 
