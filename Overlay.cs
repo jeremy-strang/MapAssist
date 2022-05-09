@@ -94,7 +94,7 @@ namespace MapAssist
         {
             if (disposed) return;
 
-            var gfx = e.Graphics;
+            //var gfx = e.Graphics;
 
             try
             {
@@ -124,67 +124,67 @@ namespace MapAssist
                         }
                     }
 
-                    if (changed)
-                    {
-                        _compositor.SetArea(areaData, pointsOfInterest);
-                    }
+                    //if (changed)
+                    //{
+                    //    _compositor.SetArea(areaData, pointsOfInterest);
+                    //}
 
-                    gfx.ClearScene();
+                    //gfx.ClearScene();
 
-                    if (_compositor != null && InGame() && _compositor != null && _gameData != null)
-                    {
-                        UpdateLocation();
+                    //if (_compositor != null && InGame() && _compositor != null && _gameData != null)
+                    //{
+                    //    UpdateLocation();
 
-                        if (gfx.Width > 0 && gfx.Height > 0)
-                        {
-                            var errorLoadingAreaData = _compositor._areaData == null;
+                    //    if (gfx.Width > 0 && gfx.Height > 0)
+                    //    {
+                    //        var errorLoadingAreaData = _compositor._areaData == null;
 
-                            var overlayHidden = false;
-                            //var overlayHidden = !_show ||
-                            //    errorLoadingAreaData ||
-                            //    (MapAssistConfiguration.Loaded.RenderingConfiguration.ToggleViaInGameMap && !_gameData.MenuOpen.Map) ||
-                            //    (MapAssistConfiguration.Loaded.RenderingConfiguration.ToggleViaInGamePanels && _gameData.MenuPanelOpen > 0) ||
-                            //    (MapAssistConfiguration.Loaded.RenderingConfiguration.ToggleViaInGamePanels && _gameData.MenuOpen.EscMenu) ||
-                            //    Array.Exists(MapAssistConfiguration.Loaded.HiddenAreas, area => area == _gameData.Area) ||
-                            //    _gameData.Area == Area.None ||
-                            //    gfx.Width == 1 ||
-                            //    gfx.Height == 1;
+                    //        var overlayHidden = false;
+                    //        //var overlayHidden = !_show ||
+                    //        //    errorLoadingAreaData ||
+                    //        //    (MapAssistConfiguration.Loaded.RenderingConfiguration.ToggleViaInGameMap && !_gameData.MenuOpen.Map) ||
+                    //        //    (MapAssistConfiguration.Loaded.RenderingConfiguration.ToggleViaInGamePanels && _gameData.MenuPanelOpen > 0) ||
+                    //        //    (MapAssistConfiguration.Loaded.RenderingConfiguration.ToggleViaInGamePanels && _gameData.MenuOpen.EscMenu) ||
+                    //        //    Array.Exists(MapAssistConfiguration.Loaded.HiddenAreas, area => area == _gameData.Area) ||
+                    //        //    _gameData.Area == Area.None ||
+                    //        //    gfx.Width == 1 ||
+                    //        //    gfx.Height == 1;
 
-                            var size = MapAssistConfiguration.Loaded.RenderingConfiguration.Size;
+                    //        var size = MapAssistConfiguration.Loaded.RenderingConfiguration.Size;
 
-                            var drawBounds = new Rectangle(0, 0, gfx.Width, gfx.Height * 0.78f);
-                            switch (MapAssistConfiguration.Loaded.RenderingConfiguration.Position)
-                            {
-                                case MapPosition.TopLeft:
-                                    drawBounds = new Rectangle(PlayerIconWidth() + 40, PlayerIconWidth() + 100, 0, PlayerIconWidth() + 100 + size);
-                                    break;
+                    //        var drawBounds = new Rectangle(0, 0, gfx.Width, gfx.Height * 0.78f);
+                    //        switch (MapAssistConfiguration.Loaded.RenderingConfiguration.Position)
+                    //        {
+                    //            case MapPosition.TopLeft:
+                    //                drawBounds = new Rectangle(PlayerIconWidth() + 40, PlayerIconWidth() + 100, 0, PlayerIconWidth() + 100 + size);
+                    //                break;
 
-                                case MapPosition.TopRight:
-                                    drawBounds = new Rectangle(0, 100, gfx.Width, 100 + size);
-                                    break;
-                            }
+                    //            case MapPosition.TopRight:
+                    //                drawBounds = new Rectangle(0, 100, gfx.Width, 100 + size);
+                    //                break;
+                    //        }
 
-                            _compositor.Init(gfx, _gameData, drawBounds);
+                    //        _compositor.Init(gfx, _gameData, drawBounds);
 
-                            if (!overlayHidden)
-                            {
-                                //_compositor.DrawGamemap(gfx);
-                                //_compositor.DrawOverlay(gfx);
-                                //_compositor.DrawBuffs(gfx);
-                                //_compositor.DrawMonsterBar(gfx);
-                            }
+                    //        if (!overlayHidden)
+                    //        {
+                    //            //_compositor.DrawGamemap(gfx);
+                    //            //_compositor.DrawOverlay(gfx);
+                    //            //_compositor.DrawBuffs(gfx);
+                    //            //_compositor.DrawMonsterBar(gfx);
+                    //        }
 
-                            _compositor.DrawPlayerInfo(gfx);
+                    //        _compositor.DrawPlayerInfo(gfx);
 
-                            var gameInfoAnchor = GameInfoAnchor(MapAssistConfiguration.Loaded.GameInfo.Position);
-                            var nextAnchor = _compositor.DrawGameInfo(gfx, gameInfoAnchor, e, errorLoadingAreaData);
+                    //        var gameInfoAnchor = GameInfoAnchor(MapAssistConfiguration.Loaded.GameInfo.Position);
+                    //        var nextAnchor = _compositor.DrawGameInfo(gfx, gameInfoAnchor, e, errorLoadingAreaData);
 
-                            var itemLogAnchor = (MapAssistConfiguration.Loaded.ItemLog.Position == MapAssistConfiguration.Loaded.GameInfo.Position)
-                                ? nextAnchor.Add(0, GameInfoPadding())
-                                : GameInfoAnchor(MapAssistConfiguration.Loaded.ItemLog.Position);
-                            _compositor.DrawItemLog(gfx, itemLogAnchor);
-                        }
-                    }
+                    //        var itemLogAnchor = (MapAssistConfiguration.Loaded.ItemLog.Position == MapAssistConfiguration.Loaded.GameInfo.Position)
+                    //            ? nextAnchor.Add(0, GameInfoPadding())
+                    //            : GameInfoAnchor(MapAssistConfiguration.Loaded.ItemLog.Position);
+                    //        _compositor.DrawItemLog(gfx, itemLogAnchor);
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)
