@@ -38,30 +38,26 @@ RenderingConfiguration:
   LinesMode: All
 MapConfiguration:
   SuperUniqueMonster:
-    IconOutlineColor: Yellow
+    IconColor: Yellow
     IconShape: Cross
-    IconSize: 6
-    IconThickness: 2
+    IconSize: 7
   UniqueMonster:
-    IconOutlineColor: DarkOrange
+    IconColor: DarkOrange
     IconShape: Cross
-    IconSize: 6
-    IconThickness: 2
+    IconSize: 7
   ChampionMonster:
-    IconOutlineColor: DarkRed
+    IconColor: MidnightBlue
     IconShape: Cross
-    IconSize: 6
-    IconThickness: 2
+    IconSize: 7
   MinionMonster:
-    IconOutlineColor: 255, 150, 150
-    IconShape: Cross
-    IconSize: 6
-    IconThickness: 1
+    IconColor: DarkOrange
+    IconShape: Ellipse
+    IconSize: 5
   NormalMonster:
-    IconOutlineColor: Gray
-    IconShape: Cross
-    IconSize: 6
-    IconThickness: 1
+    IconOutlineColor: 214, 190, 143
+    IconShape: Ellipse
+    IconSize: 4
+    IconThickness: 2
   Npc:
     IconOutlineColor: 196, 196, 196
     IconShape: Cross
