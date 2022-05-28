@@ -10,7 +10,7 @@ HiddenAreas:
 - Forgotten Tower
 AuthorizedWindowTitles: []
 RenderingConfiguration:
-  Opacity: 0.35
+  Opacity: 0.3
   IconOpacity: 0.7
   OverlayMode: true
   Position: Center
@@ -262,7 +262,7 @@ ItemLog:
   CheckVendorItems: true
   CheckItemOnIdentify: true
   PlaySoundOnDrop: true
-  SoundFile: ''
+  SoundFile: 'Clap.wav'
   SoundVolume: 100
   DisplayForSeconds: 45
   LabelFont: Exocet Blizzard Mixed Caps
