@@ -347,7 +347,7 @@ namespace MapAssist.Helpers
 
                 if (_MenuPanelOpenOffset == IntPtr.Zero)
                 {
-                    _MenuPanelOpenOffset = processContext.GetMenuOpenOffset(buffer);
+                    _MenuPanelOpenOffset = processContext.GetMenuDataOffset(buffer);
                     // _log.Info($"Found offset {nameof(_MenuPanelOpenOffset)} 0x{_MenuPanelOpenOffset.ToInt64() - processContext.BaseAddr.ToInt64():X}");
                 }
 
