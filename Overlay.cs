@@ -83,10 +83,14 @@ namespace MapAssist
 
         private static void KillD2r()
         {
+            var id = Process.GetCurrentProcess().SessionId;
             var procs = Process.GetProcessesByName("D2R");
             foreach (var proc in procs)
             {
-                proc.Kill();
+                if (proc.SessionId == id)
+                {
+                    try { proc.Kill(); } catch (Exception) { }
+                }
             }
         }
 

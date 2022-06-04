@@ -601,7 +601,7 @@
     <None Include="Resources\PhoenixStrike.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MAServer.exe">
+    <Content Include="ChickenServer.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Resources\InventoryExportTemplate.html" />
