@@ -83,10 +83,14 @@ namespace MapAssist
 
         private static void KillD2r()
         {
+            var id = Process.GetCurrentProcess().SessionId;
             var procs = Process.GetProcessesByName("D2R");
             foreach (var proc in procs)
             {
-                proc.Kill();
+                if (proc.SessionId == id)
+                {
+                    try { proc.Kill(); } catch (Exception) { }
+                }
             }
         }
 
@@ -120,7 +124,7 @@ namespace MapAssist
                         if (!_townNames.Contains(_gameData.Area.ToString()) && playerUnit.LifePercentage > 0 && playerUnit.LifePercentage < _chickenHpPercent)
                         {
                             KillD2r();
-                            MessageBox.Show("D2R was killed by MAChicken due to life threshold being reached. Player life: " + playerUnit.LifePercentage + "%, threshold: " + _chickenHpPercent + "%");
+                            _log.Info("D2R was killed by MAChicken due to life threshold being reached. Player life: " + playerUnit.LifePercentage + "%, threshold: " + _chickenHpPercent + "%");
                         }
                     }
 

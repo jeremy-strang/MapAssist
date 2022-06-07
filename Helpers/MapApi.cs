@@ -44,7 +44,7 @@ namespace MapAssist.Helpers
         private static readonly NLog.Logger _log = NLog.LogManager.GetCurrentClassLogger();
         private static Process _pipeClient;
         private static readonly object _pipeRequestLock = new object();
-        private const string _procName = "MAServer.exe";
+        private const string _procName = "ChickenServer.exe";
 
         private readonly ConcurrentDictionary<Area, AreaData> _cache;
         private Difficulty _difficulty;
@@ -537,10 +537,14 @@ namespace MapAssist.Helpers
             DisposePipe();
 
             // Shutdown old running versions of the map server
+            var id = Process.GetCurrentProcess().SessionId;
             var procs = Process.GetProcessesByName(_procName);
             foreach (var proc in procs)
             {
-                proc.Kill();
+                if (proc.SessionId == id)
+                {
+                    try { proc.Kill(); } catch (Exception) { }
+                }
             }
         }
     }
