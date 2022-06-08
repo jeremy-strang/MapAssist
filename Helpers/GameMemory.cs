@@ -236,20 +236,8 @@ namespace MapAssist.Helpers
                 var serverMissileList = rawServerMissileUnits.Where(x => x != null && x.UnitType == UnitType.Missile && x.UnitId < uint.MaxValue).ToArray();
                 var missileList = clientMissileList.Concat(serverMissileList).ToArray();
 
-                // Set Cube Owner
-                var allItems = GetUnits<UnitItem>(UnitType.Item, true).Where(x => x.UnitId < uint.MaxValue).ToArray();
-                if (_playerMapChanged[_currentProcessId] || _playerCubeOwnerID[_currentProcessId] == uint.MaxValue)
-                {
-                    var cube = allItems.FirstOrDefault(x => x.Item == Item.HoradricCube);
-
-                    if (cube != null)
-                    {
-                        cube.Update();
-                        _playerCubeOwnerID[_currentProcessId] = cube.ItemData.dwOwnerID;
-                    }
-                }
-
                 // Items
+                var allItems = GetUnits<UnitItem>(UnitType.Item, true).Where(x => x.UnitId < uint.MaxValue).ToArray();
                 var rawItemUnits = new List<UnitItem>();
                 foreach (var item in allItems)
                 {
