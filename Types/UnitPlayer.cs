@@ -12,9 +12,9 @@ namespace MapAssist.Types
         public string Name { get; private set; }
         public Act Act { get; private set; }
         public Skills Skills { get; private set; }
-        public bool InParty { get; private set; }
-        public bool IsHostile { get; private set; }
         public RosterEntry RosterEntry { get; private set; }
+        public ulong InitSeedHash { get; private set; }
+        public uint EndSeedHash { get; private set; }
 
         public UnitPlayer(IntPtr ptrUnit) : base(ptrUnit)
         {
@@ -31,6 +31,8 @@ namespace MapAssist.Types
                     //Inventory = processContext.Read<Inventory>(Struct.ptrInventory);
                     Skills = new Skills(Struct.pSkills);
                     StateList = GetStateList();
+                    InitSeedHash = Act.InitSeedHash;
+                    EndSeedHash = Act.EndSeedHash;
                 }
 
                 return this;
@@ -44,25 +46,6 @@ namespace MapAssist.Types
             if (rosterData.EntriesByUnitId.TryGetValue(UnitId, out var rosterEntry))
             {
                 RosterEntry = rosterEntry;
-            }
-
-            return this;
-        }
-
-        public UnitPlayer UpdateParties(RosterEntry player)
-        {
-            if (player != null)
-            {
-                if (player.PartyID != ushort.MaxValue && PartyID == player.PartyID)
-                {
-                    InParty = true;
-                    IsHostile = false;
-                }
-                else
-                {
-                    InParty = false;
-                    IsHostile = IsHostileTo(player);
-                }
             }
 
             return this;
@@ -93,37 +76,6 @@ namespace MapAssist.Types
 
                 return false;
             }
-        }
-
-        private ushort PartyID => RosterEntry != null ? RosterEntry.PartyID : ushort.MaxValue;
-
-        private bool IsHostileTo(RosterEntry otherUnit)
-        {
-            if (UnitId == otherUnit.UnitId)
-            {
-                return false;
-            }
-
-            if (RosterEntry != null)
-            {
-                using (var processContext = GameManager.GetProcessContext())
-                {
-                    var hostileInfo = RosterEntry.HostileInfo;
-
-                    while (true)
-                    {
-                        if (hostileInfo.UnitId == otherUnit.UnitId)
-                        {
-                            return hostileInfo.HostileFlag > 0;
-                        }
-
-                        if (hostileInfo.NextHostileInfo == IntPtr.Zero) break;
-                        hostileInfo = processContext.Read<HostileInfo>(hostileInfo.NextHostileInfo);
-                    }
-                }
-            }
-
-            return false;
         }
 
         public UnitItem[] WearingItems { get; set; } = new UnitItem[] { };

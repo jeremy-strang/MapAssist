@@ -113,6 +113,16 @@ namespace MapAssist.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Banner {
+            get {
+                object obj = ResourceManager.GetObject("Banner", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Barbs {
             get {
                 object obj = ResourceManager.GetObject("Barbs", resourceCulture);
@@ -296,16 +306,6 @@ namespace MapAssist.Properties {
         internal static System.Drawing.Bitmap CobraStrike {
             get {
                 object obj = ResourceManager.GetObject("CobraStrike", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Cold {
-            get {
-                object obj = ResourceManager.GetObject("Cold", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -556,6 +556,16 @@ namespace MapAssist.Properties {
         internal static System.Drawing.Bitmap Frenzy {
             get {
                 object obj = ResourceManager.GetObject("Frenzy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Frozen {
+            get {
+                object obj = ResourceManager.GetObject("Frozen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1135,9 +1145,9 @@ namespace MapAssist.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap VenomClaws {
+        internal static System.Drawing.Bitmap Venom {
             get {
-                object obj = ResourceManager.GetObject("VenomClaws", resourceCulture);
+                object obj = ResourceManager.GetObject("Venom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

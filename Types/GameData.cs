@@ -9,6 +9,7 @@ namespace MapAssist.Types
     {
         public Point PlayerPosition;
         public uint MapSeed;
+        public bool MapSeedReady;
         public Difficulty Difficulty;
         public Area Area;
         public IntPtr MainWindowHandle;
@@ -18,6 +19,7 @@ namespace MapAssist.Types
         public UnitPlayer[] Corpses;
         public UnitMonster[] Monsters;
         public UnitMonster[] Mercs;
+        public UnitMonster[] Summons;
         public UnitObject[] Objects;
         public UnitMissile[] Missiles;
         public UnitItem[] Items;
