@@ -1,5 +1,5 @@
-﻿using System.ComponentModel;
-using System.Threading.Tasks;
+﻿using MapAssist.Helpers;
+using System.ComponentModel;
 
 namespace MapAssist.Types
 {
@@ -27,34 +27,12 @@ namespace MapAssist.Types
 
                 BackgroundCalculator.DoWork += (sender, args) =>
                 {
-                    uint magic = 0x6AC690C5;
-                    uint offset = 666;
+                    var foundSeed = D2Hash.Reverse(EndSeedHash);
 
-                    uint divisor = 2 << 16 - 1;
-                    uint mod = 0;
-
-                    Parallel.For(0, divisor, (trySeed, state) =>
+                    if (foundSeed != null)
                     {
-                        var seedResult = ((uint)trySeed * magic + offset) & 0xFFFFFFFF;
-
-                        if (seedResult % divisor == EndSeedHash % divisor)
-                        {
-                            mod = (uint)trySeed;
-                            state.Stop();
-                        }
-                    });
-
-                    Parallel.For(0, ((long)uint.MaxValue + 1) / divisor - 1, (i, state) =>
-                    {
-                        var trySeed = mod + i * divisor;
-                        var seedResult = ((uint)trySeed * magic + offset) & 0xFFFFFFFF;
-
-                        if (seedResult == EndSeedHash)
-                        {
-                            GameSeedXor = (uint)InitSeedHash ^ (uint)trySeed;
-                            state.Stop();
-                        }
-                    });
+                        GameSeedXor = (uint)InitSeedHash ^ (uint)foundSeed;
+                    }
 
                     BackgroundCalculator.Dispose();
 
